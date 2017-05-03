@@ -10,18 +10,16 @@ import javax.persistence.Entity;
 
 @Entity
 public abstract class Person extends Model {
-    private String email;
-    private String name;
-    private String password;
-    private String address;
-    private String gender;
+    public String email;
+    public String name;
+    public String password;
+    public String gender;
 
     //Constructor for class models.Person
-    public Person(String email, String name, String password, String address, String gender) {
+    public Person(String email, String name, String password, String gender) {
         setEmail(email);
         setName(name);
         setPassword(password);
-        setAddress(address);
         setGender(gender);
     }
 
@@ -35,10 +33,6 @@ public abstract class Person extends Model {
 
     public String getPassword() {
         return password;
-    }
-
-    public String getAddress() {
-        return address;
     }
 
     public String getGender() {
@@ -60,10 +54,6 @@ public abstract class Person extends Model {
 
     private void setPassword(String password) {
         this.password = password;
-    }
-
-    private void setAddress(String address) {
-        this.address = address;
     }
 
     private void setGender(String gender) {

@@ -1,6 +1,6 @@
 package controllers;
 
-import play;
+import play.Logger;
 import play.mvc.*;
 
 import java.util.*;

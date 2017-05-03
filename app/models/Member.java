@@ -11,8 +11,8 @@ public class Member extends Person {
     private double height;
     private double startingWeight;
 
-    public Member(String email, String name, String password, String address, String gender, double height, double startingWeight){
-        super(email, name, password, address, gender);
+    public Member(String email, String name, String password, String gender, double height, double startingWeight){
+        super(email, name, password, gender);
         setHeight(height);
         setStartingWeight(startingWeight);
     }
@@ -37,5 +37,13 @@ public class Member extends Person {
         if ((startingWeight >= 35) && (startingWeight <= 250)) {
             this.startingWeight = startingWeight;
         }
+    }
+
+    public static Member findByEmail(String email) {
+        return find("email", email).first();
+    }
+
+    public boolean checkPassword(String password) {
+        return this.password.equals(password);
     }
 }
