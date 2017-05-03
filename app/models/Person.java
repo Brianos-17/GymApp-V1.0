@@ -11,14 +11,16 @@ import javax.persistence.Entity;
 @Entity
 public abstract class Person extends Model {
     public String email;
-    public String name;
+    public String firstName;
+    public String lastName;
     public String password;
     public String gender;
 
     //Constructor for class models.Person
-    public Person(String email, String name, String password, String gender) {
+    public Person(String email, String firstName, String lastName, String password, String gender) {
         setEmail(email);
-        setName(name);
+        setFirstName(firstName);
+        setLastName(lastName);
         setPassword(password);
         setGender(gender);
     }
@@ -27,8 +29,12 @@ public abstract class Person extends Model {
         return email;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public String getPassword() {
@@ -44,12 +50,12 @@ public abstract class Person extends Model {
         this.email = email;
     }
 
-    private void setName(String name) {
-        if (name.length() > 30) {
-            this.name = name.substring(0, 30);
-        } else {
-            this.name = name;
-        }
+    private void setFirstName(String firstName) {
+            this.firstName = firstName;
+    }
+
+    private void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     private void setPassword(String password) {

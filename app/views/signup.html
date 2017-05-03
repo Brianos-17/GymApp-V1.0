@@ -1,0 +1,107 @@
+#{extends 'main.html' /}
+#{set title: 'Signup' /}
+#{welcomemenu id:"signup" /}
+
+
+<div class="ui two column grid basic middle aligned semgemt">
+    <div class="column">
+        <form class="ui stacked segment form" name="signup" action="/register" method="POST"
+              onsubmit="return validateSignUp()">
+            <h3 class="ui header"> Register </h3>
+
+            <div class="required field">
+                <label> First Name </label>
+                <input placeholder="First Name..." type="text" name="firstName">
+            </div>
+
+            <div class="required field">
+                <label> Last Name </label>
+                <input placeholder="Last Name..." type="text" name="lastName">
+            </div>
+
+            <div class="required field">
+                <label> Email </label>
+                <input placeholder="E-mail Address..." type="text" name="email">
+            </div>
+
+            <div class="required field">
+                <label> Password </label>
+                <input placeholder="Password..." type="password" name="password">
+            </div>
+            <div class="required field">
+                <label> Password Validation </label>
+                <input placeholder="Please enter the same password as above..." type="password" name="passwordValid">
+            </div>
+
+            <div class="field">
+                <label> Gender </label>
+                <select class="ui dropdown" name="gender">
+                    <option value="male"> Male</option>
+                    <option value="female"> Female</option>
+                    <option value=""> Other</option>
+                </select>
+            </div>
+
+            <div class="required field">
+                <label> Current Starting Weight </label>
+                <input placeholder="Starting Weight(in KGs)..." type="number" name="startingWeight">
+            </div>
+
+            <button class="ui blue submit button"> Submit</button>
+            <div class="ui error message"></div>
+
+        </form>
+
+    </div>
+    <div class="column">
+        <img class="ui image" src="../../public/images/Sign_Up.png">
+    </div>
+
+</div>
+
+<script>
+    function validateSignUp() {
+        var firstName = document.forms["signup"]["firstName"].value;
+        if(firstName == "") {
+        alert("You must enter a first name");
+        }
+
+        var lastName = document.forms["signup"]["lastName"].value;
+        if(lastName == "") {
+        alert("You must enter a last name");
+        return false;
+        }
+
+        var email = document.forms["signup"]["email"].value;
+        if(email == "") {
+        alert("You must enter an email address")
+        return false;
+        }
+
+        var password = document.forms["signup"]["password"].value;
+        if(password == "") {
+        alert("You must enter a password");
+        return false;
+        }
+
+        var passwordValid = document.forms["signup"]["passwordValid"].value;
+        if(passwordValid == "") {
+        alert("You must validate your password")
+        return false;
+        }
+
+        var passwordValid = document.forms["signup"]["passwordValid"].valid;
+        if(passwordValid != password) {
+        alert("Your password validation must match your password")
+        return false;
+        }
+
+        var startingWeight = document.forms["signup"]["startingWeight"].valid;
+        if(startingWeight == "") {
+        alert("You must enter a starting weight")
+        return false;
+        }
+
+        }
+
+</script>

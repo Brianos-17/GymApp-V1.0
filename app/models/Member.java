@@ -11,8 +11,8 @@ public class Member extends Person {
     private double height;
     private double startingWeight;
 
-    public Member(String email, String name, String password, String gender, double height, double startingWeight){
-        super(email, name, password, gender);
+    public Member(String email, String firstName, String lastName, String password, String gender, double height, double startingWeight){
+        super(email, firstName, lastName, password, gender);
         setHeight(height);
         setStartingWeight(startingWeight);
     }

@@ -6,9 +6,9 @@ package models;
 public class Trainer extends Person {
     private String speciality;
 
-    public Trainer (String email, String name, String password, String gender, String speciality)
+    public Trainer (String email, String firstName, String lastName, String password, String gender, String speciality)
     {
-        super(email, name, password, gender);
+        super(email, firstName, lastName, password, gender);
         setSpeciality(speciality);
     }
 

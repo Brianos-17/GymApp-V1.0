@@ -22,9 +22,9 @@ public class Accounts extends Controller {
         redirect("/");
     }
 
-    public static void register(String name, String email, String password, String gender, double height, double startingWeight) {
+    public static void register(String firstName, String lastName, String email, String password, String gender, double height, double startingWeight) {
         Logger.info("Registering new user " + email);
-        Member member = new Member(name, email, password, gender, height, startingWeight);
+        Member member = new Member(firstName, lastName, email, password, gender, height, startingWeight);
         member.save();
         redirect("/");
     }
@@ -33,12 +33,11 @@ public class Accounts extends Controller {
         Logger.info("Attempting to authenticate with " + email + ": " + password);
 
         Member member = Member.findByEmail(email);
-        if((member != null) && (member.checkPassword(password))){
+        if ((member != null) && (member.checkPassword(password))) {
             Logger.info("Authentication successful");
             session.put("logged_in_MemberId", member.id);
             redirect("/dashboard");
-        }
-        else {
+        } else {
             Logger.info("Authentication failed");
             redirect("/login");
         }
@@ -46,11 +45,10 @@ public class Accounts extends Controller {
 
     public static Member getLoggedInMember() {
         Member member = null;
-        if(session.contains("logged_in_MemberId")) {
+        if (session.contains("logged_in_MemberId")) {
             String memberId = session.get("logged_in_MemberId");
             member = Member.findById(Long.parseLong(memberId));
-        }
-        else {
+        } else {
             login();
         }
         return member;

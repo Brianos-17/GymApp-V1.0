@@ -10,7 +10,11 @@ GET     /dashboard/deletetodo/{id}              Dashboard.deleteTodo
 GET     /admin                                  Admin.index
 GET     /about                                  About.index
 GET     /logout                                 Accounts.logout
+GET     /login                                  Accounts.login
+GET     /signup                                 Accounts.signup
 
+POST    /register                               Accounts.register
+POST    /authenticate                           Accounts.authenticate
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
