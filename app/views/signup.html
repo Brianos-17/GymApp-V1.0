@@ -3,25 +3,27 @@
 #{welcomemenu id:"signup" /}
 
 
-<div class="ui two column grid basic middle aligned semgemt">
+<div class="ui two column grid basic middle aligned segment">
     <div class="column">
         <form class="ui stacked segment form" name="signup" action="/register" method="POST"
               onsubmit="return validateSignUp()">
             <h3 class="ui header"> Register </h3>
 
-            <div class="required field">
-                <label> First Name </label>
-                <input placeholder="First Name..." type="text" name="firstName">
-            </div>
+            <div class="two fields">
+                <div class="required field">
+                    <label> First Name </label>
+                    <input placeholder="First Name..." type="text" name="firstName">
+                </div>
 
-            <div class="required field">
-                <label> Last Name </label>
-                <input placeholder="Last Name..." type="text" name="lastName">
+                <div class="required field">
+                    <label> Last Name </label>
+                    <input placeholder="Last Name..." type="text" name="lastName">
+                </div>
             </div>
 
             <div class="required field">
                 <label> Email </label>
-                <input placeholder="E-mail Address..." type="text" name="email">
+                <input placeholder="E-mail Address..." type="email" name="email">
             </div>
 
             <div class="required field">
@@ -36,15 +38,21 @@
             <div class="field">
                 <label> Gender </label>
                 <select class="ui dropdown" name="gender">
+                    <option value=""> Unspecified </option>
                     <option value="male"> Male</option>
                     <option value="female"> Female</option>
-                    <option value=""> Other</option>
                 </select>
             </div>
 
-            <div class="required field">
-                <label> Current Starting Weight </label>
-                <input placeholder="Starting Weight(in KGs)..." type="number" name="startingWeight">
+            <div class="two fields">
+                <div class="required field">
+                    <label> Height </label>
+                    <input placeholder="Height(in Metres)..." type="text" pattern="\d*" name="height">
+                </div>
+                <div class="required field">
+                    <label> Current Starting Weight </label>
+                    <input placeholder="Starting Weight(in KGs)..." type="text" pattern="\d*" name="startingWeight">
+                </div>
             </div>
 
             <button class="ui blue submit button"> Submit</button>
@@ -64,6 +72,7 @@
         var firstName = document.forms["signup"]["firstName"].value;
         if(firstName == "") {
         alert("You must enter a first name");
+        return false;
         }
 
         var lastName = document.forms["signup"]["lastName"].value;
@@ -74,7 +83,7 @@
 
         var email = document.forms["signup"]["email"].value;
         if(email == "") {
-        alert("You must enter an email address")
+        alert("You must enter an email address");
         return false;
         }
 
@@ -86,22 +95,31 @@
 
         var passwordValid = document.forms["signup"]["passwordValid"].value;
         if(passwordValid == "") {
-        alert("You must validate your password")
+        alert("You must validate your password");
         return false;
         }
 
-        var passwordValid = document.forms["signup"]["passwordValid"].valid;
-        if(passwordValid != password) {
-        alert("Your password validation must match your password")
+        var passwordValid = document.forms["signup"]["passwordValid"].value;
+        var password = document.forms["signup"]["password"].value
+        if(passwordValid !== password) {
+        alert("Your password validation must match your password");
         return false;
         }
 
-        var startingWeight = document.forms["signup"]["startingWeight"].valid;
+        var height = document.forms["signup"]["height"].value;
+        if(height == "") {
+        alert("You must enter a height");
+        return false;
+        }
+
+
+        var startingWeight = document.forms["signup"]["startingWeight"].value;
         if(startingWeight == "") {
-        alert("You must enter a starting weight")
+        alert("You must enter a starting weight");
         return false;
         }
 
         }
+
 
 </script>
