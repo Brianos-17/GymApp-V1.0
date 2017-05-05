@@ -56,14 +56,4 @@ public class Member extends Person {
     public boolean checkPassword(String password) {
         return this.password.equals(password);
     }
-
-    //Returns the latest assessment based on last entry (by calendar date)
-    public Assessment getAssessment() {
-        return memberProgress.get(sortedAssessmentDates());
-    }
-
-    //Returns the assessments dates sorted in date order
-    public SortedSet<Date> sortedAssessmentDates() {
-        return new TreeSet<>(memberProgress.keySet());
-    }
 }

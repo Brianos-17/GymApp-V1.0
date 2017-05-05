@@ -3,21 +3,21 @@
 
 <section class="ui raised segment">
   <header class="ui header">
-    Todo List
+    Assessment List
   </header>
   <table class="ui fixed table">
     <thead>
     <tr>
-      <th>Id</th>
-      <th>Todo</th>
+      <th> Id </th>
+      <th> Assessment </th>
     </tr>
     </thead>
     <tbody>
     <div class="ui bulleted list">
-      #{list items:todolist, as:'todo'}
+      #{list items:assessment, as:'todo'}
         <tr>
-          <td> ${todo.id} </td>
-          <td> ${todo.title} </td>
+          <td> ${assessment.id} </td>
+          <td> ${assessment.title} </td>
         </tr>
       #{/list}
     </div>

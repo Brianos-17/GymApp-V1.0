@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Assessment;
 import models.Todo;
 import play.Logger;
 import play.mvc.Controller;
@@ -11,7 +12,7 @@ public class Admin extends Controller
   public static void index()
   {
     Logger.info("Rendering Admin");
-    List<Todo> todolist = Todo.findAll();
-    render("admin.html", todolist);
+    List<Assessment> assessment = Assessment.findAll();
+    render("admin.html", assessment);
   }
 }
