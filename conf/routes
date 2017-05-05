@@ -5,8 +5,8 @@
 # Home page
 GET     /                                       Start.index
 GET     /dashboard                              Dashboard.index
-POST    /dashboard/addtodo                      Dashboard.addTodo
-GET     /dashboard/deletetodo/{id}              Dashboard.deleteTodo
+POST    /dashboard/addassessment                Dashboard.addAssessment
+GET     /dashboard/deleteassessment/{id}        Dashboard.deleteAssessment
 GET     /admin                                  Admin.index
 GET     /about                                  About.index
 GET     /logout                                 Accounts.logout
