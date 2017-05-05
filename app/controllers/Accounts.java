@@ -22,9 +22,9 @@ public class Accounts extends Controller {
         redirect("/");
     }
 
-    public static void register(String firstName, String lastName, String email, String password, String gender, double height, double startingWeight) {
+    public static void register(String email, String firstName, String lastName, String password, String gender, double height, double startingWeight) {
         Logger.info("Registering new user " + email);
-        Member member = new Member(firstName, lastName, email, password, gender, height, startingWeight);
+        Member member = new Member(email, firstName, lastName, password, gender, height, startingWeight);
         member.save();
         redirect("/dashboard");
     }
