@@ -1,9 +1,14 @@
 package models;
 
+import play.db.jpa.Model;
+
+import javax.persistence.Entity;
+
 /**
  * Created by Brian on 03/05/2017.
  */
-public class Assessment {
+@Entity
+public class Assessment extends Model{
     private double weight;
     private double chest;
     private double thigh;
@@ -15,9 +20,7 @@ public class Assessment {
 
     public Assessment(double weight, double chest, double thigh, double upperArm, double waist, double hips,
                       String comment, Trainer trainer) {
-        if ((weight >= 35) && (weight <= 250)) {
-            this.weight = weight;
-        }
+        setWeight(weight);
         setChest(chest);
         setThigh(thigh);
         setUpperArm(upperArm);
@@ -29,7 +32,9 @@ public class Assessment {
 
     //Mutator Methods
     public void setWeight(double weight) {
-        this.weight = weight;
+        if ((weight >= 35) && (weight <= 250)) {
+            this.weight = weight;
+        }
     }
 
     public void setChest(double chest) {

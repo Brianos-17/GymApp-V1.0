@@ -1,0 +1,8 @@
+Member:
+  email: homer@simpson.com
+  firstName: Homer
+  lastName: Simpson
+  password: password1
+  gender: M
+  height: 1.9
+  startingWeight: 78

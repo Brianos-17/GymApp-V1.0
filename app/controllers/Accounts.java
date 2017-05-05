@@ -26,7 +26,7 @@ public class Accounts extends Controller {
         Logger.info("Registering new user " + email);
         Member member = new Member(firstName, lastName, email, password, gender, height, startingWeight);
         member.save();
-        redirect("/");
+        redirect("/dashboard");
     }
 
     public static void authenticate(String email, String password) {

@@ -4,33 +4,33 @@
 #{menu id:"dashboard"/}
 
 <section class="ui raised segment">
-  <header class="ui header">
-    Gym App
-  </header>
-  <table class="ui fixed table">
-    <thead>
-    <tr>
-      <th>Todo</th>
-      <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    <div class="ui bulleted list">
-      #{list items:todolist, as:'todo'}
-      <tr>
-        <td> ${todo.title} </td>
-        <td> <a href="/dashboard/deletetodo/${todo.id} " class="ui tiny red button"> Delete </a> </td>
-      #{/list}
-    </div>
-    </tbody>
-  </table>
+    <header class="ui header">
+        Assessments
+    </header>
+    <table class="ui fixed table">
+        <thead>
+        <tr>
+            <th> Weight </th>
+            <th> Chest </th>
+            <th> Thigh </th>
+            <th> Upper Arm </th>
+            <th> Waist </th>
+            <th> Hips </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td> </td>
+        </tr>
+        </tbody>
+    </table>
 
 </section>
 
 <form class="ui stacked segment form" action="/dashboard/addtodo" method="POST">
-  <div class="field">
-    <label>Title</label>
-    <input placeholder="Title" type="text" name="title">
-  </div>
-  <button class="ui blue submit button">Add Todo</button>
+    <div class="field">
+        <label>Title</label>
+        <input placeholder="Title" type="text" name="title">
+    </div>
+    <button class="ui blue submit button">Add Todo</button>
 </form>

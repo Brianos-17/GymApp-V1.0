@@ -47,11 +47,11 @@
             <div class="two fields">
                 <div class="required field">
                     <label> Height </label>
-                    <input placeholder="Height(in Metres)..." type="text" pattern="\d*" name="height">
+                    <input placeholder="Height(in Metres)..." type="text" pattern="\d.*" name="height">
                 </div>
                 <div class="required field">
                     <label> Current Starting Weight </label>
-                    <input placeholder="Starting Weight(in KGs)..." type="text" pattern="\d*" name="startingWeight">
+                    <input placeholder="Starting Weight(in KGs)..." type="text" pattern="\d.*" name="startingWeight">
                 </div>
             </div>
 
@@ -118,8 +118,5 @@
         alert("You must enter a starting weight");
         return false;
         }
-
         }
-
-
 </script>

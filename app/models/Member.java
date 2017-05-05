@@ -1,7 +1,14 @@
 package models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import play.db.jpa.Model;
+import javax.persistence.OneToMany;
+
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.SortedSet;
 
 /**
  * Created by Brian on 03/05/2017.
@@ -10,6 +17,9 @@ import play.db.jpa.Model;
 public class Member extends Person {
     private double height;
     private double startingWeight;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Assessment> assessment = new ArrayList<Assessment>();
 
     public Member(String email, String firstName, String lastName, String password, String gender, double height, double startingWeight){
         super(email, firstName, lastName, password, gender);
@@ -45,5 +55,15 @@ public class Member extends Person {
 
     public boolean checkPassword(String password) {
         return this.password.equals(password);
+    }
+
+    //Returns the latest assessment based on last entry (by calendar date)
+    public Assessment getAssessment() {
+        return memberProgress.get(sortedAssessmentDates());
+    }
+
+    //Returns the assessments dates sorted in date order
+    public SortedSet<Date> sortedAssessmentDates() {
+        return new TreeSet<>(memberProgress.keySet());
     }
 }
