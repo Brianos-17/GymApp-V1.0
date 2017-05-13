@@ -1,4 +1,23 @@
-Member:
+Assessment(a1):
+  weight: 123.3
+  chest: 45.0
+  thigh: 12.5
+  upperArm: 23.3
+  waist: 32.0
+  hips: 38.0
+  comment: Needs Improvement
+
+Assessment(a2):
+  weight: 120.2
+  chest: 45.0
+  thigh: 12.0
+  upperArm: 23.3
+  waist: 31.0
+  hips: 36.0
+  comment: Very Good!
+
+
+Member(m1):
   email: homer@simpson.com
   firstName: Homer
   lastName: Simpson
@@ -6,3 +25,15 @@ Member:
   gender: M
   height: 1.9
   startingWeight: 78
+  assessment:
+  - a1
+  - a2
+
+Member(m2):
+  email: bart@simpson.com
+  firstName: Bart
+  lastName: Simpson
+  password: password2
+  gender: M
+  height: 1.6
+  startingWeight: 56.5

@@ -46,23 +46,23 @@ public abstract class Person extends Model {
     }
 
     //Mutator Methods
-    private void setEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    private void setFirstName(String firstName) {
+    public void setFirstName(String firstName) {
             this.firstName = firstName;
     }
 
-    private void setLastName(String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    private void setPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    private void setGender(String gender) {
+    public void setGender(String gender) {
         if ((gender.toLowerCase().equals("male")) || (gender.toLowerCase().equals("m"))) {
             this.gender = "M";
         } else if (gender.toLowerCase().equals("female") || (gender.toLowerCase().equals("f"))) {

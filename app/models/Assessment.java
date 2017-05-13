@@ -16,10 +16,9 @@ public class Assessment extends Model{
     private double waist;
     private double hips;
     private String comment;
-    private Trainer trainer;
 
     public Assessment(double weight, double chest, double thigh, double upperArm, double waist, double hips,
-                      String comment, Trainer trainer) {
+                      String comment) {
         setWeight(weight);
         setChest(chest);
         setThigh(thigh);
@@ -27,7 +26,6 @@ public class Assessment extends Model{
         setWaist(waist);
         setHips(hips);
         setComment(comment);
-        setTrainer(trainer);
     }
 
     //Mutator Methods
@@ -61,9 +59,6 @@ public class Assessment extends Model{
         this.comment = comment;
     }
 
-    public void setTrainer(Trainer trainer) {
-        this.trainer = trainer;
-    }
 
     //Accessor Methods
     public double getWeight() {
@@ -94,7 +89,4 @@ public class Assessment extends Model{
         return comment;
     }
 
-    public Trainer getTrainer() {
-        return trainer;
-    }
 }

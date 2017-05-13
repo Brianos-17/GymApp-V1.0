@@ -22,4 +22,12 @@ public class Trainer extends Person {
         this.speciality = speciality;
     }
 
+    public static Trainer findByEmail(String email) {
+        return find("email", email).first();
+    }
+
+    public boolean checkPassword(String password) {
+        return this.password.equals(password);
+    }
+
 }

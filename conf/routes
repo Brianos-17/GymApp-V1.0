@@ -5,15 +5,18 @@
 # Home page
 GET     /                                       Start.index
 GET     /dashboard                              Dashboard.index
+GET     /dashboard                              Analytics.calculateBMI
 GET     /dashboard/deleteassessment/{id}        Dashboard.deleteAssessment
 GET     /admin                                  Admin.index
 GET     /about                                  About.index
 GET     /logout                                 Accounts.logout
 GET     /login                                  Accounts.login
+GET     /trainerlogin                           Accounts.trainerLogin
 GET     /signup                                 Accounts.signup
 
 POST    /register                               Accounts.register
 POST    /authenticate                           Accounts.authenticate
+POST    /authenticateTrainer                    Accounts.authenticateTrainer
 POST    /dashboard/addassessment                Dashboard.addAssessment
 
 # Ignore favicon requests

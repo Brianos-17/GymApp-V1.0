@@ -20,22 +20,21 @@
             </div>
             <div class="column">
                 <i class="huge heartbeat icon"></i>
-                <h3>BMI</h3>
+                <h3>BMI ${member.calculateBMI()}</h3>
             </div>
             <div class="column">
                 <i class="huge doctor icon"></i>
-                <h3></h3>
+                <h3>${member.determineBMICategory(member.calculateBMI())}</h3>
             </div>
         </div>
     </div>
-
 
     <div class="ui basic middle aligned segment">
         <form class="ui stacked segment form" name="addAssessment" action="/dashboard/addassessment" method="POST">
             <div class="three fields">
                 <div class="field">
                     <label> Weight </label>
-                    <input placeholder="00.00kg" type="text" patter="\d.*" name="weight">
+                    <input placeholder="00.00kg" type="text" pattern="\d.*" name="weight">
                 </div>
                 <div class="field">
                     <label> Chest </label>
@@ -43,7 +42,7 @@
                 </div>
                 <div class="field">
                     <label> Thigh </label>
-                    <input placeholder="00.00cm" type="text" patten="\d.*" name="thigh">
+                    <input placeholder="00.00cm" type="text" pattern="\d.*" name="thigh">
                 </div>
             </div>
             <div class="three fields">
@@ -69,18 +68,29 @@
     <table class="ui fixed center aligned table">
         <thead>
         <tr>
-            <th> Weight</th>
-            <th> Chest</th>
-            <th> Thigh</th>
-            <th> Upper Arm</th>
-            <th> Waist</th>
-            <th> Hips</th>
+            <th> Weight </th>
+            <th> Chest </th>
+            <th> Thigh </th>
+            <th> Upper Arm </th>
+            <th> Waist </th>
+            <th> Hips </th>
+            <th> Comment </th>
         </tr>
         </thead>
         <tbody>
+        <div class="ui bulleted list">
+        #{list items:assessment, as:'assessment'}
         <tr>
-            <td> ${}</td>
+            <td>${assessment.weight}</td>
+            <td>${assessment.chest}</td>
+            <td>${assessment.thigh}</td>
+            <td>${assessment.upperArm}</td>
+            <td>${assessment.waist}</td>
+            <td>${assessment.hips}</td>
+            <td>${assessment.comment}</td>
         </tr>
+        #{/list}
+        </div>
         </tbody>
     </table>
 

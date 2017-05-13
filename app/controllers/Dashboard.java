@@ -17,10 +17,10 @@ public class Dashboard extends Controller {
   }
 
   public static void addAssessment(double weight, double chest, double thigh, double upperArm, double waist,
-                                   double hips, String comment, Trainer trainer)
+                                   double hips, String comment)
   {
     Member member = Accounts.getLoggedInMember();
-    Assessment newAssessment = new Assessment(weight, chest, thigh, upperArm, waist, hips, comment, trainer);
+    Assessment newAssessment = new Assessment(weight, chest, thigh, upperArm, waist, hips, comment);
     member.assessment.add(newAssessment);
     newAssessment.save();
     Logger.info("Adding new Assessment for " + member.getFirstName() + member.getLastName());
