@@ -16,6 +16,16 @@ Assessment(a2):
   hips: 36.0
   comment: Very Good!
 
+Assessment(a3):
+  weight: 98
+  chest: 35
+  thigh: 10.5
+  upperArm: 20.1
+  waist: 29
+  hips: 32
+  comment: Good starting point
+  assessment:
+  - a3
 
 Member(m1):
   email: homer@simpson.com
@@ -37,3 +47,14 @@ Member(m2):
   gender: M
   height: 1.6
   startingWeight: 56.5
+
+Trainer(t1):
+  email: tony@stark.com
+  firstName: Tony
+  lastName: Stark
+  password: trainer1
+  gender: M
+  speciality: Strength
+  allMembers:
+  - m1
+  - m2

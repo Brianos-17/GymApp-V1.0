@@ -16,6 +16,13 @@ public class Dashboard extends Controller {
     render("dashboard.html", member, assessment);
   }
 
+  public static void trainerIndex() {
+    Logger.info("Rendering Trainer Dashboard");
+    Trainer trainer = Accounts.getLoggedInTrainer();
+    List<Member> allmembers = trainer.allmembers;
+    render("trainerDashboard.html", trainer, allmembers);
+  }
+
   public static void addAssessment(double weight, double chest, double thigh, double upperArm, double waist,
                                    double hips, String comment)
   {

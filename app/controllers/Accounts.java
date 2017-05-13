@@ -18,10 +18,6 @@ public class Accounts extends Controller {
         render("login.html");
     }
 
-    public static void trainerLogin() {
-        render("trainerlogin.html");
-    }
-
     public static void logout() {
         session.clear();
         redirect("/");
@@ -38,27 +34,22 @@ public class Accounts extends Controller {
         Logger.info("Attempting to authenticate with " + email + ": " + password);
 
         Member member = Member.findByEmail(email);
-        if ((member != null) && (member.checkPassword(password))) {
-            Logger.info("Authentication successful");
-            session.put("logged_in_MemberId", member.id);
-            redirect("/dashboard");
+        Trainer trainer = Trainer.findByEmail(email);
+        if (member != null) {
+            if ((member.checkPassword(password))) {
+                Logger.info("Authentication successful");
+                session.put("logged_in_MemberId", member.id);
+                redirect("/dashboard");
+            }
+        } else if (trainer != null) {
+            if (trainer.checkPassword(password)) {
+                Logger.info("Authentication successful");
+                session.put("logged_in_TrainerId", trainer.id);
+                redirect("/trainerDashboard");
+            }
         } else {
             Logger.info("Authentication failed");
             redirect("/login");
-        }
-    }
-
-    public static void authenticateTrainer(String email, String password) {
-        Logger.info("Attempting to authenticate with " + email + ": " + password);
-
-        Trainer trainer = Trainer.findByEmail(email);
-        if ((trainer != null) && (trainer.checkPassword(password))) {
-            Logger.info("Authentication successful");
-            session.put("logged_in_TrainerId", trainer.id);
-            redirect();
-        } else {
-            Logger.info("Authentication failed");
-            redirect("/trainerlogin");
         }
     }
 
@@ -71,5 +62,16 @@ public class Accounts extends Controller {
             login();
         }
         return member;
+    }
+
+    public static Trainer getLoggedInTrainer() {
+        Trainer trainer = null;
+        if (session.contains("logged_in_TrainerId")) {
+            String trainerId = session.get("logged_in_TrainerId");
+            trainer = Trainer.findById(Long.parseLong(trainerId));
+        } else {
+            login();
+        }
+        return trainer;
     }
 }

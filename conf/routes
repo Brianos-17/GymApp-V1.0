@@ -5,7 +5,7 @@
 # Home page
 GET     /                                       Start.index
 GET     /dashboard                              Dashboard.index
-GET     /dashboard                              Analytics.calculateBMI
+GET     /trainerDashboard                       Dashboard.trainerIndex
 GET     /dashboard/deleteassessment/{id}        Dashboard.deleteAssessment
 GET     /admin                                  Admin.index
 GET     /about                                  About.index

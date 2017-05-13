@@ -1,0 +1,18 @@
+#{extends 'main.html' /}
+#{set title:'Trainer Dashboard' /}
+
+#{menu id:"trainerDashboard"/}
+
+<section class="ui raised segment">
+    #{list items:allmembers, as:'members'}
+    <div class="ui bulleted list">
+        <table>
+        <tr>
+            <td>${members.firstName}</td>
+            <td>hello</td>
+        </tr>
+        #{/list}
+        </table>
+    </div>
+
+</section>

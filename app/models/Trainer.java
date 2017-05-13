@@ -1,10 +1,21 @@
 package models;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Brian on 03/05/2017.
  */
+@Entity
 public class Trainer extends Person {
     private String speciality;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Member> allmembers = new ArrayList<Member>();
 
     public Trainer (String email, String firstName, String lastName, String password, String gender, String speciality)
     {
