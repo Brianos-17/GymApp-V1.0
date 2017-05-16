@@ -1,5 +1,6 @@
 package models;
 
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -15,10 +16,9 @@ public class Trainer extends Person {
     private String speciality;
 
     @OneToMany(cascade = CascadeType.ALL)
-    public List<Member> allmembers = new ArrayList<Member>();
+    public List<Member> members = new ArrayList<Member>();
 
-    public Trainer (String email, String firstName, String lastName, String password, String gender, String speciality)
-    {
+    public Trainer (String email, String firstName, String lastName, String password, String gender, String speciality) {
         super(email, firstName, lastName, password, gender);
         setSpeciality(speciality);
     }

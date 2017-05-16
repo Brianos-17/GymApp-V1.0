@@ -4,12 +4,13 @@ import models.*;
 import play.Logger;
 import play.mvc.Controller;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Date;
 
 public class Dashboard extends Controller {
 
-  public static void index()
-  {
+  public static void index() {
     Logger.info("Rendering Dashboard");
     Member member = Accounts.getLoggedInMember();
     List<Assessment> assessment = member.assessment;
@@ -19,13 +20,12 @@ public class Dashboard extends Controller {
   public static void trainerIndex() {
     Logger.info("Rendering Trainer Dashboard");
     Trainer trainer = Accounts.getLoggedInTrainer();
-    List<Member> allmembers = trainer.allmembers;
-    render("trainerDashboard.html", trainer, allmembers);
+    List<Member> members = trainer.members;
+    render("trainerDashboard.html", trainer, members);
   }
 
   public static void addAssessment(double weight, double chest, double thigh, double upperArm, double waist,
-                                   double hips, String comment)
-  {
+                                   double hips, String comment) {
     Member member = Accounts.getLoggedInMember();
     Assessment newAssessment = new Assessment(weight, chest, thigh, upperArm, waist, hips, comment);
     member.assessment.add(newAssessment);
@@ -34,8 +34,7 @@ public class Dashboard extends Controller {
     redirect("/dashboard");
   }
 
-  public static void deleteAssessment(Long id)
-  {
+  public static void deleteAssessment(Long id) {
     Member member = Member.findById(id);
     Assessment assessment = Assessment.findById(id);
     member.assessment.remove(assessment);

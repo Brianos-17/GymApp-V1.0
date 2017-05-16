@@ -15,7 +15,7 @@
                 <h3>${member.firstName} ${member.lastName}</h3>
             </div>
             <div class="column">
-                <i class="huge dashboard icon"></i>
+                <i class="huge ${member.isIdealBodyWeight()} dashboard icon"></i>
                 <h3>Ideal Weight Indicator</h3>
             </div>
             <div class="column">
@@ -68,26 +68,32 @@
     <table class="ui fixed center aligned table">
         <thead>
         <tr>
+            <th> Date </th>
             <th> Weight </th>
             <th> Chest </th>
             <th> Thigh </th>
             <th> Upper Arm </th>
             <th> Waist </th>
             <th> Hips </th>
+            <th> Trend </th>
             <th> Comment </th>
+            <th> Delete </th>
         </tr>
         </thead>
         <tbody>
         <div class="ui bulleted list">
         #{list items:assessment, as:'assessment'}
         <tr>
+            <td>${assessment.date}</td>
             <td>${assessment.weight}</td>
             <td>${assessment.chest}</td>
             <td>${assessment.thigh}</td>
             <td>${assessment.upperArm}</td>
             <td>${assessment.waist}</td>
             <td>${assessment.hips}</td>
+            <td><i class="large ${member.trend()} arrow circle left icon"></i></td>
             <td>${assessment.comment}</td>
+            <td><a href="/dashboard/${member.id}/deleteassessment/${assessment.id}" class="tiny red button"><i class=" large red trash icon"></i></a></td>
         </tr>
         #{/list}
         </div>

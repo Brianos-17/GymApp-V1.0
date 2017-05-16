@@ -58,12 +58,22 @@ public class Member extends Person {
             return assessment.get(assessment.size() - 1);
     }
 
-    public  double calculateBMI() {
+    public double calculateBMI() {
         if (assessment.size() > 0) {
             Assessment assessment = latestAssessment();
             return toTwoDecimalPlaces(assessment.getWeight() / (getHeight() * getHeight()));
         }
         return 0.0;
+    }
+
+    public String trend() {
+        Assessment latestAssessment = latestAssessment();
+        Assessment lastAssessment =  assessment.get(assessment.size() - 2);
+        if (latestAssessment.getWeight() < lastAssessment.getWeight()) {
+            return "green";
+        }
+        else
+            return "red";
     }
 
     public String determineBMICategory(double bmiValue) {
@@ -89,42 +99,43 @@ public class Member extends Person {
         return "NO VALID DATA";
     }
 
-    public static boolean isIdealBodyWeight(Member member, Assessment assessment) {
-        if (member.getGender().equals("M")) {
-            if (convertHeightMetresToInches(member) > 60) {
-                if ((((convertHeightMetresToInches(member) - 60) * 2.3) + 50) <= ((assessment.getWeight() + 2))
-                        && ((((convertHeightMetresToInches(member) - 60) * 2.3) + 50) >= ((assessment.getWeight()) - 2))) {
-                    return true;
+    public String isIdealBodyWeight() {
+        Assessment assessment = latestAssessment();
+        if (getGender().equals("M")) {
+            if (convertHeightMetresToInches() > 60) {
+                if ((((convertHeightMetresToInches() - 60) * 2.3) + 50) <= ((assessment.getWeight() + 2))
+                        && ((((convertHeightMetresToInches() - 60) * 2.3) + 50) >= ((assessment.getWeight()) - 2))) {
+                    return "green";
                 } else {
-                    return false;
+                    return "red";
                 }
             } else {
                 if ((50) <= ((assessment.getWeight() + 2)) && ((50) >= ((assessment.getWeight() - 2)))) {
-                    return true;
+                    return "green";
                 } else {
-                    return false;
+                    return "red";
                 }
             }
         } else {
-            if (convertHeightMetresToInches(member) > 60) {
-                if ((((convertHeightMetresToInches(member) - 60) * 2.3) + 45.5) <= ((assessment.getWeight() + 2))
-                        && ((((convertHeightMetresToInches(member) - 60) * 2.3) + 45.5) >= ((assessment.getWeight() - 2)))) {
-                    return true;
+            if (convertHeightMetresToInches() > 60) {
+                if ((((convertHeightMetresToInches() - 60) * 2.3) + 45.5) <= ((assessment.getWeight() + 2))
+                        && ((((convertHeightMetresToInches() - 60) * 2.3) + 45.5) >= ((assessment.getWeight() - 2)))) {
+                    return "green";
                 } else {
-                    return false;
+                    return "red";
                 }
             } else {
                 if ((45.5) <= ((assessment.getWeight() + 2)) && ((45.5) >= ((assessment.getWeight() - 2)))) {
-                    return true;
+                    return "green";
                 } else {
-                    return false;
+                    return "red";
                 }
             }
         }
     }
 
-    public static double convertHeightMetresToInches(Member member) {
-        return toTwoDecimalPlaces(member.getHeight() * 39.37);
+    public double convertHeightMetresToInches() {
+        return toTwoDecimalPlaces(getHeight() * 39.37);
     }
 
     public static double convertWeightKgToPounds(Assessment assessment){

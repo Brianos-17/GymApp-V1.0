@@ -4,15 +4,13 @@
 #{menu id:"trainerDashboard"/}
 
 <section class="ui raised segment">
-    #{list items:allmembers, as:'members'}
-    <div class="ui bulleted list">
-        <table>
-        <tr>
-            <td>${members.firstName}</td>
-            <td>hello</td>
-        </tr>
-        #{/list}
-        </table>
-    </div>
+        <div class="ui bulleted list">
+            #{list items:members, as:'members'}
+
+               ${members.firstName}
+
+            #{/list}
+        </div>
+    ${trainer.firstName}
 
 </section>

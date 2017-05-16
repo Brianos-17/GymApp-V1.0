@@ -2,6 +2,9 @@ package models;
 
 import play.db.jpa.Model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.Entity;
 
 /**
@@ -9,6 +12,7 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Assessment extends Model{
+    private String date;
     private double weight;
     private double chest;
     private double thigh;
@@ -19,6 +23,7 @@ public class Assessment extends Model{
 
     public Assessment(double weight, double chest, double thigh, double upperArm, double waist, double hips,
                       String comment) {
+        setDate(date);
         setWeight(weight);
         setChest(chest);
         setThigh(thigh);
@@ -29,6 +34,13 @@ public class Assessment extends Model{
     }
 
     //Mutator Methods
+    public void setDate(String date) {
+        Date currentDate = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        date = dateFormat.format(currentDate);
+        this.date = date;
+
+    }
     public void setWeight(double weight) {
         if ((weight >= 35) && (weight <= 250)) {
             this.weight = weight;
@@ -61,6 +73,10 @@ public class Assessment extends Model{
 
 
     //Accessor Methods
+    public String getDate() {
+        return date;
+    }
+
     public double getWeight() {
         return weight;
     }
