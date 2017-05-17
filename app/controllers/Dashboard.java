@@ -22,15 +22,6 @@ public class Dashboard extends Controller {
     render("trainerDashboard.html", trainer, members);
   }
 
-  public static void memberAssessment(Long trainerid, Long memberid) {
-    Logger.info("Rendering Assessments");
-    Trainer trainer = Trainer.findById(trainerid);
-    List<Member> members = trainer.members;
-    Member member = Member.findById(memberid);
-    List<Assessment> assessment = member.assessment;
-    render("assessment.html", trainer, members, member, assessment);
-  }
-
   public static void addAssessment(double weight, double chest, double thigh, double upperArm, double waist,
                                    double hips, String comment) {
     Member member = Accounts.getLoggedInMember();
@@ -42,13 +33,40 @@ public class Dashboard extends Controller {
     redirect("/dashboard");
   }
 
-  public static void deleteAssessment(Long id, Long assessmentId) {
-    Member member = Member.findById(id);
-    Assessment assessment = Assessment.findById(assessmentId);
-    member.assessment.remove(assessment);
+  public static void deleteAssessment(Long assessmentid) {
+    Member member = Accounts.getLoggedInMember();
+    Assessment deleteAssessment = Assessment.findById(assessmentid);
+    member.assessment.remove(deleteAssessment);
     member.save();
-    assessment.delete();
+    deleteAssessment.delete();
     Logger.info("Deleting Assessment");
     redirect("/dashboard");
+  }
+
+  public static void deleteMember() {
+
+  }
+
+  public static void memberAssessment(Long trainerid, Long memberid) {
+    Logger.info("Rendering Assessments");
+    Trainer trainer = Trainer.findById(trainerid);
+    List<Member> members = trainer.members;
+    Member member = Member.findById(memberid);
+    List<Assessment> assessment = member.assessment;
+    render("assessment.html", trainer, members, member, assessment);
+  }
+
+  public static void updateComment(Long trainerid, Long memberid, Long assessmentid, String comment) {
+    Trainer trainer = Trainer.findById(trainerid);
+    List<Member> members = trainer.members;
+    Member member = Member.findById(memberid);
+    Assessment updateAssessment = Assessment.findById(assessmentid);
+    List<Assessment> assessment = member.assessment;
+    updateAssessment.setComment(comment);
+    updateAssessment.save();
+    member.save();
+    trainer.save();
+    Logger.info("Updating comment for " + member.getFirstName() + member.getLastName());
+    render("assessment.html", trainer, members, member, assessment);
   }
 }

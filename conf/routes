@@ -5,7 +5,7 @@
 # Home page
 GET     /                                       Start.index
 GET     /dashboard                              Dashboard.index
-GET     /dashboard/{id}/deleteassessment/{assessmentid}        Dashboard.deleteAssessment
+GET     /dashboard/deleteassessment/{assessmentid}        Dashboard.deleteAssessment
 GET     /trainerDashboard                       Dashboard.trainerIndex
 GET     /trainerDashboard/{trainerid}/memberAssessment/{memberid}                       Dashboard.memberAssessment
 GET     /admin                                  Admin.index
@@ -14,11 +14,13 @@ GET     /logout                                 Accounts.logout
 GET     /login                                  Accounts.login
 GET     /trainerlogin                           Accounts.trainerLogin
 GET     /signup                                 Accounts.signup
+GET     /assessment                             Dashboard.
 
 POST    /register                               Accounts.register
 POST    /authenticate                           Accounts.authenticate
 POST    /authenticateTrainer                    Accounts.authenticateTrainer
 POST    /dashboard/addassessment                Dashboard.addAssessment
+POST    /memberAssessment/{trainerid}/{memberid}/updateComment/{assessmentid}                          Dashboard.updateComment
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

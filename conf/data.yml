@@ -52,6 +52,8 @@ Member(m2):
   gender: M
   height: 1.6
   startingWeight: 56.5
+  assessment:
+  - a3
 
 Trainer(t1):
   email: tony@stark.com

@@ -31,44 +31,58 @@
 
     </div>
 
-    <table class="ui fixed center aligned table">
-        <thead>
-        <tr>
-            <th> Date </th>
-            <th> Weight </th>
-            <th> Chest </th>
-            <th> Thigh </th>
-            <th> Upper Arm </th>
-            <th> Waist </th>
-            <th> Hips </th>
-            <th> Trend </th>
-            <th> Comment </th>
-            <th> Delete </th>
-        </tr>
-        </thead>
-        <tbody>
-        <div class="ui bulleted list">
-            #{list items:assessment, as:'assessment'}
+    #{list items:assessment, as:'assessment'}
+    <section class="ui raised segment">
+        <table class="ui fixed center aligned table">
+            <thead>
             <tr>
-                <td>${assessment.date}</td>
-                <td>${assessment.weight}</td>
-                <td>${assessment.chest}</td>
-                <td>${assessment.thigh}</td>
-                <td>${assessment.upperArm}</td>
-                <td>${assessment.waist}</td>
-                <td>${assessment.hips}</td>
-                <td><i class="large ${assessment.getTrend()} arrow circle left icon"></i></td>
-                <td>${assessment.comment}</td>
-                <td>
-                    <a href="/dashboard/${member.id}/deleteassessment/${assessment.id}" >
-                        <i class=" large red trash icon"></i>
-                    </a>
-                </td>
+                <th> Date</th>
+                <th> Weight</th>
+                <th> Chest</th>
+                <th> Thigh</th>
+                <th> Upper Arm</th>
+                <th> Waist</th>
+                <th> Hips</th>
+                <th> Trend</th>
+                <th> Comment</th>
+                <th> Delete</th>
             </tr>
+            </thead>
+            <tbody>
+            <div class="ui bulleted list">
+                <tr>
+                    <td>${assessment.date}</td>
+                    <td>${assessment.weight}</td>
+                    <td>${assessment.chest}</td>
+                    <td>${assessment.thigh}</td>
+                    <td>${assessment.upperArm}</td>
+                    <td>${assessment.waist}</td>
+                    <td>${assessment.hips}</td>
+                    <td><i class="large ${assessment.getTrend()} arrow circle left icon"></i></td>
+                    <td>${assessment.comment}</td>
+                    <td>
+                        <a href="/dashboard/${member.id}/deleteassessment/${assessment.id}">
+                            <i class=" large red trash icon"></i>
+                        </a>
+                    </td>
+                </tr>
+            </div>
+            </tbody>
+        </table>
+        <div>
+            <h4> Update Comment </h4>
+            <form class="ui section form" action="/memberAssessment/${trainer.id}/${member.id}/updateComment/${assessment.id}" method="POST">
+                <div>
+                    <input placeholder="Update Comment..." type="text" name="comment">
+                </div>
+                <div>
+                    <br>
+                    <button class="ui blue submit button"> Submit </button>
+                </div>
+            </form>
         </div>
-        </tbody>
-        #{/list}
-    </table>
+    </section>
+    #{/list}
 
 
 </section>

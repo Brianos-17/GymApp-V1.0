@@ -71,7 +71,7 @@ public class Member extends Person {
     public String assessmentTrend() {
         Assessment latestAssessment = latestAssessment();
         Assessment previousAssessment =  assessment.get(assessment.size() - 2);
-        if ((latestAssessment.getWeight() / (getHeight() * getHeight())) < (previousAssessment.getWeight() / (getHeight() * getHeight()))) {
+        if ((latestAssessment.getWeight() / (getHeight() * getHeight())) > (previousAssessment.getWeight() / (getHeight() * getHeight()))) {
             return "green";
         }
         else
