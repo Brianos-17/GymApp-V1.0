@@ -91,9 +91,13 @@
             <td>${assessment.upperArm}</td>
             <td>${assessment.waist}</td>
             <td>${assessment.hips}</td>
-            <td><i class="large ${member.trend()} arrow circle left icon"></i></td>
+            <td><i class="large ${assessment.getTrend()} arrow circle left icon"></i></td>
             <td>${assessment.comment}</td>
-            <td><a href="/dashboard/${member.id}/deleteassessment/${assessment.id}" class="tiny red button"><i class=" large red trash icon"></i></a></td>
+            <td>
+                <a href="/dashboard/${member.id}/deleteassessment/${assessment.id}" >
+                    <i class=" large red trash icon"></i>
+                </a>
+            </td>
         </tr>
         #{/list}
         </div>

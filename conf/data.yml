@@ -6,6 +6,7 @@ Assessment(a1):
   upperArm: 23.3
   waist: 32.0
   hips: 38.0
+  trend: red
   comment: Needs Improvement
 
 Assessment(a2):
@@ -16,6 +17,7 @@ Assessment(a2):
   upperArm: 23.3
   waist: 31.0
   hips: 36.0
+  trend: green
   comment: Very Good!
 
 Assessment(a3):
@@ -58,6 +60,6 @@ Trainer(t1):
   password: trainer1
   gender: M
   speciality: Strength
-  allMembers:
+  members:
   - m1
   - m2

@@ -3,14 +3,23 @@
 
 #{menu id:"trainerDashboard"/}
 
-<section class="ui raised segment">
-        <div class="ui bulleted list">
-            #{list items:members, as:'members'}
+<table class="ui fixed table">
 
-               ${members.firstName}
-
-            #{/list}
-        </div>
-    ${trainer.firstName}
-
-</section>
+    <tbody>
+    <div class="ui bulleted list">
+        #{list items:members, as:'members'}
+        <tr>
+            <td>
+                <i class="small user icon"></i>
+                <a href="/trainerDashboard/${trainer.id}/memberAssessment/${members.id}">${members.firstName} ${members.lastName}</a>
+                <br>
+                ${members.assessment.size()} assessments
+            </td>
+            <td class="right aligned">
+                <i class="large red trash icon"></i>
+            </td>
+        </tr>
+        #{/list}
+    </div>
+    </tbody>
+</table>

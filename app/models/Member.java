@@ -1,5 +1,7 @@
 package models;
 
+import controllers.Accounts;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -63,13 +65,13 @@ public class Member extends Person {
             Assessment assessment = latestAssessment();
             return toTwoDecimalPlaces(assessment.getWeight() / (getHeight() * getHeight()));
         }
-        return 0.0;
+        return toTwoDecimalPlaces(startingWeight / (height * height));
     }
 
-    public String trend() {
+    public String assessmentTrend() {
         Assessment latestAssessment = latestAssessment();
-        Assessment lastAssessment =  assessment.get(assessment.size() - 2);
-        if (latestAssessment.getWeight() < lastAssessment.getWeight()) {
+        Assessment previousAssessment =  assessment.get(assessment.size() - 2);
+        if ((latestAssessment.getWeight() / (getHeight() * getHeight())) < (previousAssessment.getWeight() / (getHeight() * getHeight()))) {
             return "green";
         }
         else
@@ -77,7 +79,6 @@ public class Member extends Person {
     }
 
     public String determineBMICategory(double bmiValue) {
-        if (assessment.size() > 0) {
             if (bmiValue < 15) {
                 return "VERY SEVERELY UNDERWEIGHT";
             } else if ((bmiValue >= 15) && (bmiValue < 16)) {
@@ -95,22 +96,54 @@ public class Member extends Person {
             } else {
                 return "VERY SEVERELY OBESE";
             }
-        }
-        return "NO VALID DATA";
     }
 
     public String isIdealBodyWeight() {
-        Assessment assessment = latestAssessment();
+        if (assessment.size() > 0) {
+            Assessment assessment = latestAssessment();
+            if (getGender().equals("M")) {
+                if (convertHeightMetresToInches() > 60) {
+                    if ((((convertHeightMetresToInches() - 60) * 2.3) + 50) <= ((assessment.getWeight() + 2))
+                            && ((((convertHeightMetresToInches() - 60) * 2.3) + 50) >= ((assessment.getWeight()) - 2))) {
+                        return "green";
+                    } else {
+                        return "red";
+                    }
+                } else {
+                    if ((50) <= ((assessment.getWeight() + 2)) && ((50) >= ((assessment.getWeight() - 2)))) {
+                        return "green";
+                    } else {
+                        return "red";
+                    }
+                }
+            } else {
+                if (convertHeightMetresToInches() > 60) {
+                    if ((((convertHeightMetresToInches() - 60) * 2.3) + 45.5) <= ((assessment.getWeight() + 2))
+                            && ((((convertHeightMetresToInches() - 60) * 2.3) + 45.5) >= ((assessment.getWeight() - 2)))) {
+                        return "green";
+                    } else {
+                        return "red";
+                    }
+                } else {
+                    if ((45.5) <= ((assessment.getWeight() + 2)) && ((45.5) >= ((assessment.getWeight() - 2)))) {
+                        return "green";
+                    } else {
+                        return "red";
+                    }
+                }
+            }
+        }
+        else
         if (getGender().equals("M")) {
             if (convertHeightMetresToInches() > 60) {
-                if ((((convertHeightMetresToInches() - 60) * 2.3) + 50) <= ((assessment.getWeight() + 2))
-                        && ((((convertHeightMetresToInches() - 60) * 2.3) + 50) >= ((assessment.getWeight()) - 2))) {
+                if ((((convertHeightMetresToInches() - 60) * 2.3) + 50) <= ((getStartingWeight() + 2))
+                        && ((((convertHeightMetresToInches() - 60) * 2.3) + 50) >= ((getStartingWeight() - 2)))) {
                     return "green";
                 } else {
                     return "red";
                 }
             } else {
-                if ((50) <= ((assessment.getWeight() + 2)) && ((50) >= ((assessment.getWeight() - 2)))) {
+                if ((50) <= ((getStartingWeight() + 2)) && ((50) >= ((getStartingWeight() - 2)))) {
                     return "green";
                 } else {
                     return "red";
@@ -118,14 +151,14 @@ public class Member extends Person {
             }
         } else {
             if (convertHeightMetresToInches() > 60) {
-                if ((((convertHeightMetresToInches() - 60) * 2.3) + 45.5) <= ((assessment.getWeight() + 2))
-                        && ((((convertHeightMetresToInches() - 60) * 2.3) + 45.5) >= ((assessment.getWeight() - 2)))) {
+                if ((((convertHeightMetresToInches() - 60) * 2.3) + 45.5) <= ((getStartingWeight() + 2))
+                        && ((((convertHeightMetresToInches() - 60) * 2.3) + 45.5) >= ((getStartingWeight() - 2)))) {
                     return "green";
                 } else {
                     return "red";
                 }
             } else {
-                if ((45.5) <= ((assessment.getWeight() + 2)) && ((45.5) >= ((assessment.getWeight() - 2)))) {
+                if ((45.5) <= ((getStartingWeight() + 2)) && ((45.5) >= ((getStartingWeight() - 2)))) {
                     return "green";
                 } else {
                     return "red";

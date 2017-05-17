@@ -5,8 +5,9 @@
 # Home page
 GET     /                                       Start.index
 GET     /dashboard                              Dashboard.index
-GET     /trainerDashboard                       Dashboard.trainerIndex
 GET     /dashboard/{id}/deleteassessment/{assessmentid}        Dashboard.deleteAssessment
+GET     /trainerDashboard                       Dashboard.trainerIndex
+GET     /trainerDashboard/{trainerid}/memberAssessment/{memberid}                       Dashboard.memberAssessment
 GET     /admin                                  Admin.index
 GET     /about                                  About.index
 GET     /logout                                 Accounts.logout

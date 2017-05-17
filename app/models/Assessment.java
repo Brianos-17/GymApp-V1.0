@@ -11,7 +11,7 @@ import javax.persistence.Entity;
  * Created by Brian on 03/05/2017.
  */
 @Entity
-public class Assessment extends Model{
+public class Assessment extends Model {
     private String date;
     private double weight;
     private double chest;
@@ -19,10 +19,11 @@ public class Assessment extends Model{
     private double upperArm;
     private double waist;
     private double hips;
+    private String trend;
     private String comment;
 
     public Assessment(double weight, double chest, double thigh, double upperArm, double waist, double hips,
-                      String comment) {
+                      String trend, String comment) {
         setDate(date);
         setWeight(weight);
         setChest(chest);
@@ -30,6 +31,7 @@ public class Assessment extends Model{
         setUpperArm(upperArm);
         setWaist(waist);
         setHips(hips);
+        setTrend(trend);
         setComment(comment);
     }
 
@@ -39,8 +41,8 @@ public class Assessment extends Model{
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         date = dateFormat.format(currentDate);
         this.date = date;
-
     }
+
     public void setWeight(double weight) {
         if ((weight >= 35) && (weight <= 250)) {
             this.weight = weight;
@@ -65,6 +67,10 @@ public class Assessment extends Model{
 
     public void setHips(double hips) {
         this.hips = hips;
+    }
+
+    public void setTrend(String trend) {
+        this.trend = trend;
     }
 
     public void setComment(String comment) {
@@ -99,6 +105,10 @@ public class Assessment extends Model{
 
     public double getHips() {
         return hips;
+    }
+
+    public String getTrend() {
+        return trend;
     }
 
     public String getComment() {
