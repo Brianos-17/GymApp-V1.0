@@ -3,6 +3,10 @@
 
 #{trainerMenu id:"trainerDashboard"/}
 
+<div class="ui centre aligned">
+    <h4>Welcome ${trainer.firstName} ${trainer.lastName}!</h4>
+</div>
+
 <table class="ui table">
 
     <tbody>
@@ -13,7 +17,8 @@
                 <i class="small user icon"></i>
             </td>
             <td class="fourteen wide">
-                <a href="/trainerDashboard/${trainer.id}/memberAssessment/${members.id}">${members.firstName} ${members.lastName}</a>
+                <a href="/trainerDashboard/${trainer.id}/memberAssessment/${members.id}">${members.firstName}
+                    ${members.lastName}</a>
                 <br>
                 ${members.assessment.size()} assessments
             </td>
