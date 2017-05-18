@@ -1,7 +1,5 @@
 package models;
 
-import controllers.Accounts;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -24,6 +22,7 @@ public class Member extends Person {
         super(email, firstName, lastName, password, gender);
         setHeight(height);
         setStartingWeight(startingWeight);
+        Trainer.members.add(this);
     }
 
     //Accessor Methods
@@ -71,19 +70,19 @@ public class Member extends Person {
     public String assessmentTrend() {
         int idealBMI = 22;
         if (assessment.size() == 1) {
-            double previousBMI = startingWeight / (getHeight() * getHeight());
-            if (((calculateBMI() < previousBMI) && (calculateBMI() >= idealBMI))
-                    || (calculateBMI() > previousBMI) && (calculateBMI() <= idealBMI)) {
+            double previousBMI = (startingWeight / (getHeight() * getHeight()));
+            if(Math.abs(calculateBMI() - idealBMI) < Math.abs(previousBMI - idealBMI)) {
                 return "green";
-            } else
+            }
+            else
                 return "red";
         } else if (assessment.size() > 1) {
             Assessment previousAssessment = assessment.get(assessment.size() - 2);
-            double previousBMI = previousAssessment.getWeight() / (getHeight() * getHeight());
-            if (((calculateBMI() < previousBMI) && (calculateBMI() >= idealBMI))
-                    || (calculateBMI() > previousBMI) && (calculateBMI() <= idealBMI)) {
+            double previousBMI = (previousAssessment.getWeight() / (getHeight() * getHeight()));
+            if (Math.abs(calculateBMI() - idealBMI) < Math.abs(previousBMI - idealBMI)) {
                 return "green";
-            } else
+            }
+            else
                 return "red";
         } else
             return "black";
@@ -187,5 +186,4 @@ public class Member extends Person {
     private static double toTwoDecimalPlaces(double num) {
         return (int) (num * 100) / 100.0;
     }
-
 }

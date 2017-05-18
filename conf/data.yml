@@ -6,7 +6,7 @@ Assessment(a1):
   upperArm: 23.3
   waist: 32.0
   hips: 38.0
-  trend: red
+  trend: black
   comment: Needs Improvement
 
 Assessment(a2):
@@ -28,6 +28,7 @@ Assessment(a3):
   upperArm: 20.1
   waist: 29
   hips: 32
+  trend: black
   comment: Good starting point
   assessment:
   - a3
@@ -65,3 +66,12 @@ Trainer(t1):
   members:
   - m1
   - m2
+
+Trainer(t2):
+  email: steve@rogers.com
+  firstName: Steve
+  lastName: Rogers
+  password: trainer2
+  gender: M
+  speciality: Weights
+  members:

@@ -18,16 +18,17 @@ public class Dashboard extends Controller {
     public static void trainerIndex() {
         Logger.info("Rendering Trainer Dashboard");
         Trainer trainer = Accounts.getLoggedInTrainer();
-        List<Member> members = trainer.members;
+        List<Member> members = Member.findAll();
         render("trainerDashboard.html", trainer, members);
     }
 
     public static void addAssessment(double weight, double chest, double thigh, double upperArm, double waist,
                                      double hips, String comment) {
         Member member = Accounts.getLoggedInMember();
-        String trend = member.assessmentTrend();
+        String trend = "black";
         Assessment newAssessment = new Assessment(weight, chest, thigh, upperArm, waist, hips, trend, comment);
         member.assessment.add(newAssessment);
+        newAssessment.setTrend(member.assessmentTrend());
         newAssessment.save();
         Logger.info("Adding new Assessment for " + member.getFirstName() + member.getLastName());
         redirect("/dashboard");

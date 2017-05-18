@@ -44,9 +44,7 @@ public class Assessment extends Model {
     }
 
     public void setWeight(double weight) {
-        if ((weight >= 35) && (weight <= 250)) {
             this.weight = weight;
-        }
     }
 
     public void setChest(double chest) {

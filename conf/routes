@@ -15,8 +15,8 @@ GET     /logout                                 Accounts.logout
 GET     /login                                  Accounts.login
 GET     /trainerlogin                           Accounts.trainerLogin
 GET     /signup                                 Accounts.signup
-GET     /assessment/{memberid}/deleteassessment/{assessmentid}                 Dashboard.deleteMemberAssessment
 GET     /account                                Dashboard.account
+GET     /assessment/{memberid}/deleteassessment/{assessmentid}                 Dashboard.deleteMemberAssessment
 
 POST    /register                               Accounts.register
 POST    /authenticate                           Accounts.authenticate

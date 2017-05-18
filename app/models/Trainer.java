@@ -16,7 +16,7 @@ public class Trainer extends Person {
     private String speciality;
 
     @OneToMany(cascade = CascadeType.ALL)
-    public List<Member> members = new ArrayList<Member>();
+    public static List<Member> members = new ArrayList<Member>();
 
     public Trainer (String email, String firstName, String lastName, String password, String gender, String speciality) {
         super(email, firstName, lastName, password, gender);
@@ -40,5 +40,4 @@ public class Trainer extends Person {
     public boolean checkPassword(String password) {
         return this.password.equals(password);
     }
-
 }

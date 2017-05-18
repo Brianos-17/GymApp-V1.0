@@ -3,19 +3,21 @@
 
 #{trainerMenu id:"trainerDashboard"/}
 
-<table class="ui fixed table">
+<table class="ui table">
 
     <tbody>
     <div class="ui bulleted list">
         #{list items:members, as:'members'}
         <tr>
-            <td class="left aligned">
+            <td class="one wide">
                 <i class="small user icon"></i>
+            </td>
+            <td class="fourteen wide">
                 <a href="/trainerDashboard/${trainer.id}/memberAssessment/${members.id}">${members.firstName} ${members.lastName}</a>
                 <br>
                 ${members.assessment.size()} assessments
             </td>
-            <td class="right aligned">
+            <td class=" one wide right aligned">
                 <a href="/trainerDashboard/deleteMember/${members.id}">
                     <i class="large red trash icon"></i>
                 </a>
