@@ -57,7 +57,7 @@ public class Member extends Person {
     }
 
     public Assessment latestAssessment() {
-            return assessment.get(assessment.size() - 1);
+        return assessment.get(assessment.size() - 1);
     }
 
     public double calculateBMI() {
@@ -69,33 +69,44 @@ public class Member extends Person {
     }
 
     public String assessmentTrend() {
-        Assessment latestAssessment = latestAssessment();
-        Assessment previousAssessment =  assessment.get(assessment.size() - 2);
-        if ((latestAssessment.getWeight() / (getHeight() * getHeight())) > (previousAssessment.getWeight() / (getHeight() * getHeight()))) {
-            return "green";
-        }
-        else
-            return "red";
+        int idealBMI = 22;
+        if (assessment.size() == 1) {
+            double previousBMI = startingWeight / (getHeight() * getHeight());
+            if (((calculateBMI() < previousBMI) && (calculateBMI() >= idealBMI))
+                    || (calculateBMI() > previousBMI) && (calculateBMI() <= idealBMI)) {
+                return "green";
+            } else
+                return "red";
+        } else if (assessment.size() > 1) {
+            Assessment previousAssessment = assessment.get(assessment.size() - 2);
+            double previousBMI = previousAssessment.getWeight() / (getHeight() * getHeight());
+            if (((calculateBMI() < previousBMI) && (calculateBMI() >= idealBMI))
+                    || (calculateBMI() > previousBMI) && (calculateBMI() <= idealBMI)) {
+                return "green";
+            } else
+                return "red";
+        } else
+            return "black";
     }
 
     public String determineBMICategory(double bmiValue) {
-            if (bmiValue < 15) {
-                return "VERY SEVERELY UNDERWEIGHT";
-            } else if ((bmiValue >= 15) && (bmiValue < 16)) {
-                return "SEVERELY UNDERWEIGHT";
-            } else if ((bmiValue >= 16) && (bmiValue < 18.5)) {
-                return "UNDERWEIGHT";
-            } else if ((bmiValue >= 18.5) && (bmiValue < 25)) {
-                return "NORMAL";
-            } else if ((bmiValue >= 25) && (bmiValue < 30)) {
-                return "OVERWEIGHT";
-            } else if ((bmiValue >= 30) && (bmiValue < 35)) {
-                return "MODERATELY OBESE";
-            } else if ((bmiValue >= 35) && (bmiValue < 40)) {
-                return "SEVERELY OBESE";
-            } else {
-                return "VERY SEVERELY OBESE";
-            }
+        if (bmiValue < 15) {
+            return "VERY SEVERELY UNDERWEIGHT";
+        } else if ((bmiValue >= 15) && (bmiValue < 16)) {
+            return "SEVERELY UNDERWEIGHT";
+        } else if ((bmiValue >= 16) && (bmiValue < 18.5)) {
+            return "UNDERWEIGHT";
+        } else if ((bmiValue >= 18.5) && (bmiValue < 25)) {
+            return "NORMAL";
+        } else if ((bmiValue >= 25) && (bmiValue < 30)) {
+            return "OVERWEIGHT";
+        } else if ((bmiValue >= 30) && (bmiValue < 35)) {
+            return "MODERATELY OBESE";
+        } else if ((bmiValue >= 35) && (bmiValue < 40)) {
+            return "SEVERELY OBESE";
+        } else {
+            return "VERY SEVERELY OBESE";
+        }
     }
 
     public String isIdealBodyWeight() {
@@ -132,9 +143,7 @@ public class Member extends Person {
                     }
                 }
             }
-        }
-        else
-        if (getGender().equals("M")) {
+        } else if (getGender().equals("M")) {
             if (convertHeightMetresToInches() > 60) {
                 if ((((convertHeightMetresToInches() - 60) * 2.3) + 50) <= ((getStartingWeight() + 2))
                         && ((((convertHeightMetresToInches() - 60) * 2.3) + 50) >= ((getStartingWeight() - 2)))) {
@@ -171,8 +180,8 @@ public class Member extends Person {
         return toTwoDecimalPlaces(getHeight() * 39.37);
     }
 
-    public static double convertWeightKgToPounds(Assessment assessment){
-        return toTwoDecimalPlaces((assessment.getWeight()) *2.2 );
+    public double convertWeightKgToPounds() {
+        return toTwoDecimalPlaces(getStartingWeight() * 2.2);
     }
 
     private static double toTwoDecimalPlaces(double num) {

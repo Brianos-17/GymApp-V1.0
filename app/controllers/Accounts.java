@@ -74,4 +74,53 @@ public class Accounts extends Controller {
         }
         return trainer;
     }
+
+    public static void updateProfileFirstName(String firstName) {
+        Member member = getLoggedInMember();
+        member.setFirstName(firstName);
+        member.save();
+        render("account.html", member);
+    }
+
+    public static void updateProfileLastName(String lastName) {
+        Member member = getLoggedInMember();
+        member.setLastName(lastName);
+        member.save();
+        render("account.html", member);
+    }
+
+    public static void updateProfileEmail(String email) {
+        Member member = getLoggedInMember();
+        member.setEmail(email);
+        member.save();
+        render("account.html", member);
+    }
+
+    public static void updateProfileGender (String gender) {
+        Member member = getLoggedInMember();
+        member.setGender(gender);
+        member.save();
+        render("account.html", member);
+    }
+
+    public static void updateProfilePassword (String password) {
+        Member member = getLoggedInMember();
+        member.setPassword(password);
+        member.save();
+        render("account.html", member);
+    }
+
+    public static void updateProfileHeight (double height) {
+        Member member = getLoggedInMember();
+        member.setHeight(height);
+        member.save();
+        render("account.html", member);
+    }
+
+    public static void updateProfileStartingWeight (double startingWeight) {
+        Member member = getLoggedInMember();
+        member.setStartingWeight(startingWeight);
+        member.save();
+        render("account.html", member);
+    }
 }

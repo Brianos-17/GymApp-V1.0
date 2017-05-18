@@ -1,7 +1,7 @@
 #{extends 'main.html' /}
 #{set title:'Trainer Dashboard' /}
 
-#{menu id:"trainerDashboard"/}
+#{trainerMenu id:"trainerDashboard"/}
 
 <table class="ui fixed table">
 
@@ -9,14 +9,14 @@
     <div class="ui bulleted list">
         #{list items:members, as:'members'}
         <tr>
-            <td>
+            <td class="left aligned">
                 <i class="small user icon"></i>
                 <a href="/trainerDashboard/${trainer.id}/memberAssessment/${members.id}">${members.firstName} ${members.lastName}</a>
                 <br>
                 ${members.assessment.size()} assessments
             </td>
             <td class="right aligned">
-                <a href="">
+                <a href="/trainerDashboard/deleteMember/${members.id}">
                     <i class="large red trash icon"></i>
                 </a>
             </td>

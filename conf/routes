@@ -5,22 +5,31 @@
 # Home page
 GET     /                                       Start.index
 GET     /dashboard                              Dashboard.index
-GET     /dashboard/deleteassessment/{assessmentid}        Dashboard.deleteAssessment
-GET     /trainerDashboard                       Dashboard.trainerIndex
-GET     /trainerDashboard/{trainerid}/memberAssessment/{memberid}                       Dashboard.memberAssessment
+GET     /dashboard/deleteassessment/{assessmentid}                             Dashboard.deleteAssessment
+GET     /trainerDashboard                                                      Dashboard.trainerIndex
+GET     /trainerDashboard/{trainerid}/memberAssessment/{memberid}              Dashboard.memberAssessment
+GET     /trainerDashboard/deleteMember/{memberid}                              Dashboard.deleteMember
 GET     /admin                                  Admin.index
 GET     /about                                  About.index
 GET     /logout                                 Accounts.logout
 GET     /login                                  Accounts.login
 GET     /trainerlogin                           Accounts.trainerLogin
 GET     /signup                                 Accounts.signup
-GET     /assessment                             Dashboard.
+GET     /assessment/{memberid}/deleteassessment/{assessmentid}                 Dashboard.deleteMemberAssessment
+GET     /account                                Dashboard.account
 
 POST    /register                               Accounts.register
 POST    /authenticate                           Accounts.authenticate
 POST    /authenticateTrainer                    Accounts.authenticateTrainer
 POST    /dashboard/addassessment                Dashboard.addAssessment
-POST    /memberAssessment/{trainerid}/{memberid}/updateComment/{assessmentid}                          Dashboard.updateComment
+POST    /memberAssessment/{trainerid}/{memberid}/updateComment/{assessmentid}  Dashboard.updateComment
+POST    /updateProfileFirstName                                                Accounts.updateProfileFirstName
+POST    /updateProfileLastName                                                 Accounts.updateProfileLastName
+POST    /updateProfileEmail                                                    Accounts.updateProfileEmail
+POST    /updateProfileGender                                                   Accounts.updateProfileGender
+POST    /updateProfilePassword                                                 Accounts.updateProfilePassword
+POST    /updateProfileHeight                                                   Accounts.updateProfileHeight
+POST    /updateProfileStartingWeight                                           Accounts.updateProfileStartingWeight
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

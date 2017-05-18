@@ -6,29 +6,29 @@
 <div class="ui two column grid basic middle aligned segment">
     <div class="column">
         <form class="ui stacked segment form" name="signup" action="/register" method="POST"
-              onsubmit="return validateSignUp()">
+              onsubmit="return validatePassword()">
             <h3 class="ui header"> Register </h3>
 
             <div class="two fields">
                 <div class="required field">
                     <label> First Name </label>
-                    <input placeholder="First Name..." type="text" name="firstName">
+                    <input placeholder="First Name..." type="text" name="firstName" required>
                 </div>
 
                 <div class="required field">
                     <label> Last Name </label>
-                    <input placeholder="Last Name..." type="text" name="lastName">
+                    <input placeholder="Last Name..." type="text" name="lastName" required>
                 </div>
             </div>
 
             <div class="required field">
                 <label> Email </label>
-                <input placeholder="E-mail Address..." type="email" name="email">
+                <input placeholder="E-mail Address..." type="email" name="email" required>
             </div>
 
             <div class="required field">
                 <label> Password </label>
-                <input placeholder="Password..." type="password" name="password">
+                <input placeholder="Password..." type="password" name="password" required>
             </div>
             <div class="required field">
                 <label> Password Validation </label>
@@ -47,11 +47,11 @@
             <div class="two fields">
                 <div class="required field">
                     <label> Height </label>
-                    <input placeholder="Height(in Metres)..." type="text" pattern="\d.*" name="height">
+                    <input placeholder="Height(in Metres)..." type="text" pattern="\d.*" name="height" required>
                 </div>
                 <div class="required field">
                     <label> Current Starting Weight </label>
-                    <input placeholder="Starting Weight(in KGs)..." type="text" pattern="\d.*" name="startingWeight">
+                    <input placeholder="Starting Weight(in KGs)..." type="text" pattern="\d.*" name="startingWeight" required>
                 </div>
             </div>
 
@@ -68,53 +68,11 @@
 </div>
 
 <script>
-    function validateSignUp() {
-        var firstName = document.forms["signup"]["firstName"].value;
-        if(firstName == "") {
-        alert("You must enter a first name");
-        return false;
-        }
-
-        var lastName = document.forms["signup"]["lastName"].value;
-        if(lastName == "") {
-        alert("You must enter a last name");
-        return false;
-        }
-
-        var email = document.forms["signup"]["email"].value;
-        if(email == "") {
-        alert("You must enter an email address");
-        return false;
-        }
-
-        var password = document.forms["signup"]["password"].value;
-        if(password == "") {
-        alert("You must enter a password");
-        return false;
-        }
-
-        var passwordValid = document.forms["signup"]["passwordValid"].value;
-        if(passwordValid == "") {
-        alert("You must validate your password");
-        return false;
-        }
-
+    function validatePassword() {
         var passwordValid = document.forms["signup"]["passwordValid"].value;
         var password = document.forms["signup"]["password"].value
         if(passwordValid !== password) {
         alert("Your password validation must match your password");
-        return false;
-        }
-
-        var height = document.forms["signup"]["height"].value;
-        if(height == "") {
-        alert("You must enter a height");
-        return false;
-        }
-
-        var startingWeight = document.forms["signup"]["startingWeight"].value;
-        if(startingWeight == "") {
-        alert("You must enter a starting weight");
         return false;
         }
         }
