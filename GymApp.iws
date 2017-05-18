@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7066e135-47cf-4d53-9cfe-acfd5831195a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/controllers/Admin.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/utils/Analytics.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/admin.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GymApp.iws" afterPath="$PROJECT_DIR$/GymApp.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProcFile" afterPath="$PROJECT_DIR$/ProcFile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/About.java" afterPath="$PROJECT_DIR$/app/controllers/About.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Accounts.java" afterPath="$PROJECT_DIR$/app/controllers/Accounts.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Dashboard.java" afterPath="$PROJECT_DIR$/app/controllers/Dashboard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Start.java" afterPath="$PROJECT_DIR$/app/controllers/Start.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Assessment.java" afterPath="$PROJECT_DIR$/app/models/Assessment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Member.java" afterPath="$PROJECT_DIR$/app/models/Member.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Person.java" afterPath="$PROJECT_DIR$/app/models/Person.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/Trainer.java" afterPath="$PROJECT_DIR$/app/models/Trainer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/signup.html" afterPath="$PROJECT_DIR$/app/views/signup.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/application.conf" afterPath="$PROJECT_DIR$/conf/application.conf" />
     </list>
     <ignored path="$PROJECT_DIR$/tmp/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -73,8 +59,8 @@
       <file leaf-file-name="Dashboard.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/Dashboard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2155">
-              <caret line="148" column="96" lean-forward="false" selection-start-line="148" selection-start-column="96" selection-end-line="148" selection-end-column="96" />
+            <state relative-caret-position="217">
+              <caret line="73" column="7" lean-forward="false" selection-start-line="73" selection-start-column="7" selection-end-line="73" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1067,8 +1053,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Dashboard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2155">
-          <caret line="148" column="96" lean-forward="false" selection-start-line="148" selection-start-column="96" selection-end-line="148" selection-end-column="96" />
+        <state relative-caret-position="217">
+          <caret line="73" column="7" lean-forward="false" selection-start-line="73" selection-start-column="7" selection-end-line="73" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -71,6 +71,7 @@ public class Dashboard extends Controller {
     /**
      * Method which allows a trainer to delete a specific assessment for a member
      * Renders the assessment page for the trainer with the updated information
+     * 
      * @param memberid long
      * @param assessmentid long
      */
